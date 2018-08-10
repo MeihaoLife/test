@@ -19,6 +19,7 @@ public class CarInvocationHandler implements InvocationHandler{
 
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 
+//         测试代码
             System.out.println("------before--------");
             Object result = method.invoke(target, args);
             System.out.println("------after--------");
