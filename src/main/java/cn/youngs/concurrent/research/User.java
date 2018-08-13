@@ -1,5 +1,7 @@
 package cn.youngs.concurrent.research;
 
+import jdk.nashorn.internal.runtime.regexp.joni.exception.SyntaxException;
+
 /**
  * @Auther: zhanghao
  * @Date: 2018/8/13 22:59
@@ -22,5 +24,9 @@ public class User{
     @Override
     public String toString() {
         return "userid:"+userid + " username:" + username;
+    }
+
+    private String getTimes(String time){
+        return time+"---------";
     }
 }

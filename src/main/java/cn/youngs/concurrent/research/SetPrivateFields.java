@@ -1,7 +1,11 @@
 package cn.youngs.concurrent.research;
 
+import cn.youngs.proxy.CarInvocationHandler;
+
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 
 /**
  * @Auther: zhanghao
@@ -13,7 +17,7 @@ public class SetPrivateFields {
 
     public static void main(String[] args) {
         User u = new User();
-        Method[] methods = User.class.getMethods();
+        Method[] methods = User.class.getDeclaredMethods();
         Field[] fields = User.class.getDeclaredFields();
 
         for (int i = 0; i < fields.length; i++)
@@ -31,6 +35,20 @@ public class SetPrivateFields {
             }
 
         System.out.println(u);
+        CarInvocationHandler carInvocationHandler = new CarInvocationHandler(u);
+        for (Method m : methods){
+            m.setAccessible(true);
+            if("getTimes".equals(m.getName())){
+                try {
+                    Object o = m.invoke(u,"str");
+                    System.out.println(o);
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
 }
