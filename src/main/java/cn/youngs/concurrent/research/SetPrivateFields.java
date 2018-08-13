@@ -35,7 +35,7 @@ public class SetPrivateFields {
             }
 
         System.out.println(u);
-        /* test2 */
+        /* test3*/
         for (Method m : methods){
             m.setAccessible(true);
             if("getTimes".equals(m.getName())){
