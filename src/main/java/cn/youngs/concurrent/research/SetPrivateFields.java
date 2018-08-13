@@ -35,7 +35,7 @@ public class SetPrivateFields {
             }
 
         System.out.println(u);
-        CarInvocationHandler carInvocationHandler = new CarInvocationHandler(u);
+
         for (Method m : methods){
             m.setAccessible(true);
             if("getTimes".equals(m.getName())){
